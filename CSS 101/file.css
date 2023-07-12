@@ -1,0 +1,16 @@
+body{
+    background-color: #f5f5f5;
+    background-image: url(kristaps-ungurs-wYn_ydMhjbU-unsplash.jpg);
+}
+
+#box{
+    display: block;
+    width: 200px;
+    height: 200px;
+    margin: 50px auto;
+    background-color: rgba(0,0,0,0.5);
+    color: red;
+    text-align: center;
+    padding: 25px;
+    /*opacity: 0.5;*/
+}
