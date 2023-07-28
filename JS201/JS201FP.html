@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 201</title>
+    <style>
+
+            #body {
+            width: 100%;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .title {
+            width: 100%;
+            height: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 5rem;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 80%;
+        }
+
+        .people-container {
+            width: 100%;
+            height: 50%; /* Each section takes 50% of the container's height */
+            display: flex;
+            padding-bottom: 5rem;
+        }
+
+        #people {
+            width: 100%;
+            font-size: 1.4rem;
+        }
+
+        #name {
+            width: 25%;
+            font-size: 2.5rem;
+            display: inline-block;
+             text-align: center;
+        }
+
+        #birth_year {
+            width: 20%;
+            font-size: 1.4rem;
+            display: inline-block;
+            text-align: center;
+        }
+
+        #height {
+            width: 20%;
+            font-size: 1.4rem;
+             display: inline-block;
+            text-align: center;
+        }
+
+        .getRandomPeople {
+            width: 15%;
+            font-size: 1.4rem;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .getRandomPeople button {
+            width: 5rem;
+            height: 3rem;
+            background-color: #000;
+            color: #fff;
+            border-radius: 5px;
+            outline: none;
+            cursor: pointer;
+            
+        }
+
+        .planets-container {
+            width: 100%;
+            height: 50%; /* Each section takes 50% of the container's height */
+            display: flex;
+            padding-bottom: 5rem;
+        }
+
+        #planets {
+            width: 100%;
+            flex-basis: 100%;
+            font-size: 1.4rem;
+        }
+
+        #planetname {
+            width: 30%;
+            font-size: 2.5rem;
+            display: inline-block;
+            text-align: center;
+        }
+
+        #climate {
+            width: 30%;
+            font-size: 1.4rem;
+            display: inline-block;
+            text-align: center;
+        }
+
+        #population {
+            width: 30%;
+            font-size: 1.4rem;
+            display: inline-block;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="title">
+        <h1>Star Wars</h1>
+    </div>
+
+    <div class="container">
+        <div class="people-container">
+            <div id="people">
+                <strong>Character:</strong>
+                <h2 id="name">Loading...</h2>
+                <p id="birth_year">Loading...</p>
+                <p id="height">Loading...</p>
+                <div class="getRandomPeople">
+                    <button class="button1">Choose Another</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="planets-container">
+            <div id="planets">
+                <strong>Planet</strong>
+                <h2 id="planetname">Loading...</h2>
+                <p id="climate">Loading...</p>
+                <p id="population">Loading...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const randomNumber=Math.ceil(Math.random()*83);
+
+        let cplanet;
+
+        fetch(`https://swapi.dev/api/people/${randomNumber}/`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            document.getElementById('name').innerHTML = data.name;
+            const by = data.birth_year;
+            document.getElementById('birth_year').innerText = `Birth_year: ${by}`;
+            const height = data.height;
+            document.getElementById('height').innerText = `Height: ${height}`;
+
+            cplanet = data.homeworld;
+
+            return fetch(cplanet);
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            document.getElementById('planetname').innerHTML = data.name;
+            const climate = data.climate;
+            document.getElementById('climate').innerText = `Climate: ${climate}`;
+            const population = data.population;
+            document.getElementById('population').innerText = `Population: ${population}`;
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+        const buttonc = document.querySelector('.button1');
+
+        buttonc.addEventListener('click',(e) =>{
+
+            e.preventDefault()
+            document.getElementById('name').innerHTML='<em>Loading...</em>';
+            document.getElementById('birth_year').innerHTML='<em>Loading...</em>';
+            document.getElementById('height').innerHTML='<em>Loading...</em>';
+            document.getElementById('planetname').innerHTML='<em>Loading...</em>';
+            document.getElementById('climate').innerHTML='<em>Loading...</em>';
+            document.getElementById('population').innerHTML='<em>Loading...</em>';
+
+
+
+            console.log('button1 Clicked');
+
+            const randomNumber=Math.ceil(Math.random()*83);
+
+            fetch(`https://swapi.dev/api/people/${randomNumber}/`)
+            .then(response => response.json())
+            .then(data =>
+                {
+                    console.log(data)
+                    document.getElementById('name').innerHTML=data.name;
+                    const by=data.birth_year;
+                    document.getElementById('birth_year').innerHTML=`Birth_year: ${by}`;
+                    const height=data.height;
+                    document.getElementById('height').innerHTML=`Height: ${height}`;
+
+                    cplanet = data.homeworld;
+
+                    return fetch(cplanet);
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    document.getElementById('planetname').innerHTML = data.name;
+                    const climate = data.climate;
+                    document.getElementById('climate').innerText = `Climate: ${climate}`;
+                    const population = data.population;
+                    document.getElementById('population').innerText = `Population: ${population}`;
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+            }
+
+        );
+        
+      
+
+    </script>
+
+</body>
+</html>
