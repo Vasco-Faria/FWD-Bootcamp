@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Wars Api</title>
+
+    <style>
+
+
+        body{
+            overflow-x: hidden;
+        }
+
+        .row{
+            width:100%;
+            display: grid;
+            grid-template-columns: 60% 40%;
+            
+        }
+        
+        button{
+            width: 10rem;
+            height: 3rem;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 5%;
+            margin: 2rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+        }
+
+
+        .container{
+            grid-column: 1/2;
+            height: 70%;
+            text-align: center;
+            line-height: 2rem;
+            display: inline-block;
+        }
+        .pname{
+            font-size: 2rem;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .name{
+            font-size: 2rem;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .imgc{
+           grid-column: 2/3;
+            height: 70%;
+            display: inline-block;
+        }
+
+        .imgc img{
+
+            width: 50%;
+            height: 50%;
+            border: 1px solid black;
+            margin-top: 25%;
+            margin-left: 25%;
+            
+        }
+
+        footer{
+             position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: grey;
+            color: white;
+            text-align: center;
+        }
+
+
+
+    </style>
+
+</head>
+<body>
+
+    <div class="row">
+        <div class="container">
+            <button>Gen a Character</button>
+
+            <h2 class="pname"><strong>Name:</strong></h2>
+            <h2 class="name">Click the button</h2>
+
+            <p class="pheight"><strong>Height:</strong></p>
+            <p class="height">Click the button</p>
+
+            <p class="pmass"><strong>Mass:</strong></p>
+            <p class="mass">Click the button</p>
+
+            <p class="pgender"><strong>Gender:</strong></p>
+            <p class="gender">Click the button</p>
+            
+            <p class="pspecie"><strong>Specie:</strong></p>
+            <p class="specie">Click the button</p>
+
+        </div>
+        <div class="imgc">
+            <img src="" alt="image">
+        </div>
+     </div>
+
+    <footer>
+        <h1>Star Wars Character Gen Info</h1>
+        <p>Created by Vasco Faria</p>
+    </footer>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+
+        const rnumb= Math.ceil(Math.random()*88)
+
+        $.get(`https://rawcdn.githack.com/akabab/starwars-api/0.2.1/api/id/${rnumb}.json`, function(data) {
+                console.log(data);
+            $(".name").text(data.name);
+                $(".height").text(data.height);
+                $(".mass").text(data.mass);
+                $(".gender").text(data.gender);
+                $(".specie").text(data.species);
+                $("img").attr("src",data.image);
+            })
+
+        $("button").on("click",function() {
+            const rnumb= Math.ceil(Math.random()*88)
+            $.get(`https://rawcdn.githack.com/akabab/starwars-api/0.2.1/api/id/${rnumb}.json`, function(data) {
+                console.log(data);
+                $(".name").text(data.name);
+                $(".height").text(data.height);
+                $(".mass").text(data.mass);
+                $(".gender").text(data.gender);
+                $(".specie").text(data.species);
+                $("img").attr("src",data.image);
+            })
+        })
+
+    </script>
+    
+</body>
+</html>
