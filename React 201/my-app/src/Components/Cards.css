@@ -1,0 +1,15 @@
+.card {
+    background-color: #10101e;
+    width: 22rem;
+    height: 24rem;
+}
+
+
+#mask {
+    background-color: rgba(251, 251, 251, 0.15)
+}
+
+.img-fluid {
+    max-height: 16rem;
+    object-fit: cover;
+}
