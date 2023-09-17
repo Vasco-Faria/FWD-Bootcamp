@@ -1,0 +1,9 @@
+Transactions from Vasco account:
+
+Deposit 2040.0$
+Withdrew 500.0$
+Deposit 600.0$
+Withdrew 700.0$
+Deposit 500.0$
+Withdrew 40.0$
+Account amount: 2000.0$
