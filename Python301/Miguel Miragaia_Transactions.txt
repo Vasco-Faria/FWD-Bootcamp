@@ -1,0 +1,8 @@
+Transactions from Miguel Miragaia account:
+
+Initial Amount: 200.0
+Deposit 2000.0$
+Failed to withdraw 4000000.0$
+Deposit 200.0$
+Withdrew 565.0$
+Account amount: 1835.0$

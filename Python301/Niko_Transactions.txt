@@ -1,0 +1,7 @@
+Transactions from Niko account:
+
+Initial Amount: 200.0$
+Deposit 1000.0$
+Withdrew 400.0$
+Failed to withdraw 40000.0$
+Account amount: 800.0$

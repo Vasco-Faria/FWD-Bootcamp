@@ -13,6 +13,7 @@ class Bank:
         
         with open(f"{self.name}_Transactions.txt","w") as file:
             file.write(f"Transactions from {self.name} account:\n\n")
+            file.write(f"Initial Amount: {self.balance}$\n")
         
         
     def log_transactions(self,transaction_string):
@@ -24,10 +25,13 @@ class Bank:
             amount=float(amount)
         except ValueError:
             amount=0
-        if amount:
+        if amount and amount<self.balance:
             self.balance-=amount
             print(f"+ The Withdrawal was sucessfully!!")
             self.log_transactions(f"Withdrew {amount}$\n")
+        else:
+            print(f"- The Withdrawal was not sucessfully!!")
+            self.log_transactions(f"Failed to withdraw {amount}$\n")
         
         
     def deposit(self,amount):

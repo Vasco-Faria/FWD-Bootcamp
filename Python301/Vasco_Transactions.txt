@@ -1,9 +1,8 @@
 Transactions from Vasco account:
 
-Deposit 2040.0$
-Withdrew 500.0$
-Deposit 600.0$
-Withdrew 700.0$
+Deposit 400.0$
+Failed to withdraw 1000.0$
 Deposit 500.0$
-Withdrew 40.0$
-Account amount: 2000.0$
+Withdrew 200.0$
+Failed to withdraw 1000.0$
+Account amount: 900.0$
