@@ -36,19 +36,21 @@ while True:
     if name_pokemon !="":
 
         info=request(name_pokemon)
-        pokemon_data=toDictionary(info)
         
-        pname=pokemon_data['name'].capitalize()
+        if info !=None:
+            pokemon_data=toDictionary(info)
+        
+        
+            pname=pokemon_data['name'].capitalize()
 
-        print("\nPokemon info:\n")
-        print(f"Name:\t{pname}\n")
-        print(f"Abilities:")
-        for ab in pokemon_data['abilities']:
-            print("\t-",ab["ability"]["name"])
-        print("\nTypes:")
-        for t in pokemon_data['types']:
-            print('\t-',t['type']['name'])
-    
+            print("\nPokemon info:\n")
+            print(f"Name:\t{pname}\n")
+            print(f"Abilities:")
+            for ab in pokemon_data['abilities']:
+                print("\t-",ab["ability"]["name"])
+            print("\nTypes:")
+            for t in pokemon_data['types']:
+                print('\t-',t['type']['name'])
     else:
         print("Was nice to see you! Bye!")
         break            
