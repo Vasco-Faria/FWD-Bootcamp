@@ -1,0 +1,16 @@
+{%extends "base.html"%}
+
+{%block title%} Upload a new image {%endblock%}
+
+{%block body%}
+    <a class="goback" href="{% url 'feed:index' %}"> &larr; Go Back </a>
+    <div class="addposts">
+        <h1>Upload a new image</h1>
+        <form method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+            <div>
+                <button type="submit">Submit form</button>
+            </div>
+    </div>
+{%endblock%}

@@ -1,0 +1,37 @@
+{% extends "base.html"%}
+{% load thumbnail %}
+
+
+{% block title %}
+   My first Django app
+{% endblock %}
+
+
+{% block body %}
+
+   <h1 class="home-title"> Image Sharer</h1>
+   <br>
+
+   <div class="row">
+      {%for post in posts%}
+      <div class="col-sm-6 col-md-4">
+         <div class="card profile-card-5">
+            <div class="card-img-block">
+               <a href="/detail/{{post.id}}/">
+                  {%thumbnail post.image "550x200" crop="center" as im%}
+                  <img src="{{im.url}}"  width={{im.width}} height={{im.height}} alt="image">
+                  {%endthumbnail%}
+               </a>
+            </div>
+               <div class="card-body pt-0">
+               <h5 class="card-title">{{post.text}}</h5>
+               <p class="card-text">It is what it is... A simple cute catt</p>
+               
+            </div>
+         </div>
+      </div>
+      {% endfor %}
+   </div>
+   <br>
+   <br>
+{% endblock %}
