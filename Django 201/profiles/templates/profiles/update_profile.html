@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% block head_title %}
+    Edit Profile
+{% endblock %}
+{% block style %}{% endblock %}
+
+{% block body %}
+    <div class="text-center">
+        <div class="rounded-3xl overflow-hidden shadow-xl pb-5 w-9/12 my-5 text-black bg-gray-200 mx-auto">
+            {% thumbnail user.profile.bg_image "800x300" crop="center" as im %}
+                   <img src="{{ im.url }}" class=' -mt-3' alt='avatar'>
+           {% endthumbnail %}
+           <div class="flex justify-center -mt-20">
+               {% thumbnail user.profile.image "150x150" crop="center" as im %}
+                       <img src="{{ im.url }}" class='rounded-full border-solid border-white border-2 -mt-3' alt='avatar'>
+               {% endthumbnail %}		
+           </div>
+           <form method="post" class="text-left px-10" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset>
+                <legend class="text-4xl text-extrabold text-blue-800 py-4 text-center">Profile Info</legend>
+                {{ u_form }}
+                {{ p_form }}
+            </fieldset>
+            <div class="form-group text-center my-10">
+                <button type="submit" class="p-2 pl-5 pr-5 transition-colors duration-700 transform bg-indigo-500 hover:bg-blue-400 text-gray-100 text-lg rounded-lg focus:border-4 border-indigo-300">Update</button>
+            </div>
+        </form>
+       </div>
+        
+    </div>
+{% endblock body %}
